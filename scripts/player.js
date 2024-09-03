@@ -6,9 +6,9 @@ export default class Player {
         this.width = width * aspectRatio;
         this.height = height * aspectRatio;
         this.velocityY = 0;
-        this.speed = 2 * aspectRatio;
+        this.speed = 0.75 * aspectRatio;
         this.jumpPower = 8 * aspectRatio;
-        this.gravity = 0.3 * aspectRatio;
+        this.gravity = 0.5 * aspectRatio;
         this.onGround = false;
         this.world = world;
         this.image = playerImage; // Store the player image
@@ -21,6 +21,7 @@ export default class Player {
 
         // Log the player's X position
         console.log(`Player X position: ${this.x}`);
+        console.log(`Player y position: ${this.y}`);
 
         // Jumping
         if (input.keys.jump && this.onGround) {

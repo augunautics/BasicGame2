@@ -6,11 +6,9 @@ import { getAspectRatioScale, loadImage } from './utils.js';
 window.onload = () => {
     const canvas = document.getElementById('gameCanvas');
     const baseWidth = 500;
-    const baseHeight = 300;
-    const aspectRatio = 2; // Scaling factor
+    const aspectRatio = 3; // Scaling factor
 
     canvas.width = baseWidth * aspectRatio; // Canvas width scaled by aspect ratio
-    canvas.height = baseHeight * aspectRatio; // Canvas height scaled by aspect ratio
 
     const imageSources = [
         '../images/world1-1.png',

@@ -6,9 +6,10 @@ export default class World {
         this.backgroundImage = backgroundImage; // Add background image
 
         // Crop the image height in half
-        this.croppedHeight = backgroundImage.height / 2;
+        this.croppedHeight = backgroundImage.height / 2 - 16;
 
-        this.groundY = this.canvas.height - 30 * this.aspectRatio; // Ground level
+        //this.groundY = this.canvas.height - 30 * this.aspectRatio; // Ground level
+        this.groundY = this.croppedHeight* this.aspectRatio - 16*this.aspectRatio;
         this.worldWidth = backgroundImage.width * this.aspectRatio; // World width scaled by background image width
         this.wallThickness = 20 * this.aspectRatio; // Wall thickness scaled by aspect ratio
         this.scrollX = 0; // Horizontal scrolling position
@@ -39,15 +40,20 @@ export default class World {
             -this.scrollX, 0, // Destination x, y on the canvas (left justified)
             this.worldWidth, this.canvas.height // Destination width and height on the canvas
         );
-
+    
+        // Draw the red square around the canvas
+        this.context.strokeStyle = 'red';
+        this.context.lineWidth = 2; // Set the border width to 2 pixels
+        this.context.strokeRect(0, 0, this.canvas.width, this.canvas.height);
+    
         // Draw ground
         this.context.fillStyle = '#8B4513'; // Brown ground
-        this.context.fillRect(-this.scrollX, 500, this.worldWidth, this.canvas.height - this.groundY);
-
+        //this.context.fillRect(-this.scrollX, 500, this.worldWidth, this.canvas.height - this.groundY);
+    
         // Draw left wall
         this.context.fillStyle = '#8B4513'; // Brown wall
         this.context.fillRect(0 - this.scrollX, 0, this.wallThickness, this.groundY);
-
+    
         // Draw right wall
         this.context.fillRect(this.worldWidth - this.wallThickness - this.scrollX, 0, this.wallThickness, this.groundY);
     }
@@ -61,6 +67,16 @@ export default class World {
         // Check collision with right wall
         if (player.x + player.width > this.worldWidth - this.wallThickness) {
             player.x = this.worldWidth - this.wallThickness - player.width;
+        }
+
+        // Check collision with the ground
+        const offset = 1;
+        if (player.y + player.height > this.groundY - offset) {
+            player.y = this.groundY - player.height;
+            player.velocityY = 0; // Stop the player from falling
+            player.onGround = true; // Indicate that the player is on the ground
+        } else {
+            player.onGround = false; // Indicate that the player is in the air
         }
     }
 }
