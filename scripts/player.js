@@ -1,5 +1,5 @@
 export default class Player {
-    constructor(x, y, width, height, aspectRatio, world) {
+    constructor(x, y, width, height, aspectRatio, world, image) {
         this.x = x;
         this.y = y;
         this.width = width * aspectRatio;
@@ -10,6 +10,8 @@ export default class Player {
         this.gravity = 0.3 * aspectRatio;
         this.onGround = false;
         this.world = world;
+        this.image = image;
+        this.context = world.context; // Pulling the context from the world
     }
 
     update(input) {
@@ -41,8 +43,18 @@ export default class Player {
         this.world.detectCollision(this);
     }
 
-    draw(ctx) {
-        ctx.strokeStyle = "#000";
-        ctx.strokeRect(this.x - this.world.scrollX, this.y, this.width, this.height);
+    draw() {
+        // Draw the cropped portion of the image at the player's position
+        this.context.drawImage(
+            this.image,            // Source image
+            0, 8,                  // Source x, y (top-left corner of the crop)
+            16, 16,                // Source width, height (size of the crop)
+            this.x - this.world.scrollX, this.y, // Destination x, y on the canvas
+            this.width, this.height // Destination width, height (size on the canvas)
+        );
+
+
+        //this.context.strokeStyle = "#000";
+        //this.context.strokeRect(this.x - this.world.scrollX, this.y, this.width, this.height);
     }
 }
