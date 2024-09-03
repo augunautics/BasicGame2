@@ -7,7 +7,7 @@ window.onload = () => {
     const canvas = document.getElementById('gameCanvas');
     const baseWidth = 500;
     const baseHeight = 300;
-    const aspectRatio = 1; // Scaling factor
+    const aspectRatio = 2; // Scaling factor
 
     canvas.width = baseWidth * aspectRatio; // Canvas width scaled by aspect ratio
     canvas.height = baseHeight * aspectRatio; // Canvas height scaled by aspect ratio
@@ -25,7 +25,7 @@ window.onload = () => {
     loadImages(imageSources)
         .then(([backgroundImage, playerImage]) => {
             const world = new World(canvas, aspectRatio, backgroundImage);
-            const player = new Player(50 * aspectRatio, world.groundY - 32 * aspectRatio, 16, 16, aspectRatio, world, playerImage);
+            const player = new Player(50 * aspectRatio, 100, 16, 16, aspectRatio, world, playerImage);
             const input = new InputHandler();
 
             function gameLoop() {
