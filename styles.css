@@ -1,12 +1,15 @@
 body {
   margin: 0;
   overflow: hidden;
-  background-color: black; /* Black background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: black; /* Black background around the canvas */
 }
 
 canvas {
-  display: block;
   background-color: #87CEEB; /* Sky blue background */
-  border: 20px solid black; /* 20px black border */
-  box-sizing: border-box; /* Include border in element's dimensions */
+  border: 20px solid black; /* 20px black border around the canvas */
+  box-sizing: border-box; /* Include the border in the element's dimensions */
 }
