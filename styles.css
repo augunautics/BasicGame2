@@ -1,9 +1,12 @@
 body {
   margin: 0;
   overflow: hidden;
+  background-color: black; /* Black background */
 }
 
 canvas {
   display: block;
-  background-color: #87ceeb; /* Sky blue background */
+  background-color: #87CEEB; /* Sky blue background */
+  border: 20px solid black; /* 20px black border */
+  box-sizing: border-box; /* Include border in element's dimensions */
 }
