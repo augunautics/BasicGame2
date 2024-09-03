@@ -5,7 +5,7 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: black; /* Black background around the canvas */
+  background-color: white; /* White background outside the black border */
 }
 
 canvas {
