@@ -1,5 +1,6 @@
+//player.js
 export default class Player {
-    constructor(x, y, width, height, aspectRatio, world) {
+    constructor(x, y, width, height, aspectRatio, world, playerImage) {
         this.x = x;
         this.y = y;
         this.width = width * aspectRatio;
@@ -10,6 +11,7 @@ export default class Player {
         this.gravity = 0.3 * aspectRatio;
         this.onGround = false;
         this.world = world;
+        this.image = playerImage; // Store the player image
     }
 
     update(input) {
@@ -41,8 +43,18 @@ export default class Player {
         this.world.detectCollision(this);
     }
 
-    draw(ctx) {
-        ctx.strokeStyle = "#000";
-        ctx.strokeRect(this.x - this.world.scrollX, this.y, this.width, this.height);
+    draw(context) {
+        // Draw the player image with cropping
+        context.drawImage(
+            this.image,          // Source image
+            0, 8,                // Crop start at x=0, y=8
+            16, 16,              // Crop width and height (16x16 pixels)
+            this.x - this.world.scrollX, this.y, // Destination x, y
+            this.width, this.height // Destination width, height on the canvas
+        );
+
+        // Draw a stroke rectangle around the player
+        context.strokeStyle = "#000";
+        context.strokeRect(this.x - this.world.scrollX, this.y, this.width, this.height);
     }
 }
