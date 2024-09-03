@@ -42,7 +42,7 @@ export default class World {
 
         // Draw ground
         this.context.fillStyle = '#8B4513'; // Brown ground
-        this.context.fillRect(-this.scrollX, this.groundY, this.worldWidth, this.canvas.height - this.groundY);
+        this.context.fillRect(-this.scrollX, 500, this.worldWidth, this.canvas.height - this.groundY);
 
         // Draw left wall
         this.context.fillStyle = '#8B4513'; // Brown wall
