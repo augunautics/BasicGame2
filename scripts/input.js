@@ -8,10 +8,10 @@ export default class InputHandler {
 
     window.addEventListener('keydown', (event) => {
       switch (event.code) {
-        case 'ArrowLeft':
+        case 'KeyA':
           this.keys.left = true;
           break;
-        case 'ArrowRight':
+        case 'KeyD':
           this.keys.right = true;
           break;
         case 'Space':
@@ -22,10 +22,10 @@ export default class InputHandler {
 
     window.addEventListener('keyup', (event) => {
       switch (event.code) {
-        case 'ArrowLeft':
+        case 'KeyA':
           this.keys.left = false;
           break;
-        case 'ArrowRight':
+        case 'KeyD':
           this.keys.right = false;
           break;
         case 'Space':

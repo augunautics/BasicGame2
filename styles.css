@@ -10,6 +10,5 @@ body {
 
 canvas {
   background-color: #87CEEB; /* Sky blue background */
-  border: 20px solid black; /* 20px black border around the canvas */
   box-sizing: border-box; /* Include the border in the element's dimensions */
 }

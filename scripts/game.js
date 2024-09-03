@@ -5,9 +5,9 @@ import { getAspectRatioScale } from './utils.js';
 
 window.onload = () => {
     const canvas = document.getElementById('gameCanvas');
-    const baseWidth = 256;
-    const baseHeight = 240;
-    const aspectRatio = 3; // Scaling factor
+    const baseWidth = 800;
+    const baseHeight = 600;
+    const aspectRatio = 1; // Scaling factor
 
     canvas.width = baseWidth * aspectRatio; // Canvas width scaled by aspect ratio
     canvas.height = baseHeight * aspectRatio; // Canvas height scaled by aspect ratio
